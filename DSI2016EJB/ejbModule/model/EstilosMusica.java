@@ -17,32 +17,29 @@ import javax.persistence.Entity;
 public class EstilosMusica {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int rock;
-	private int sertanejo;
 	private long oid;
-
+	@Column(length=500)
+	private String type;
 	
 	
 
 	
+	
+
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public long getOid() {
 		return oid;
 	}
 	public void setOid(long oid) {
 		this.oid = oid;
 	}
-	public int getRock() {
-		return rock;
-	}
-	public void setRock(int rock) {
-		this.rock = rock;
-	}
-	public int getSertanejo() {
-		return sertanejo;
-	}
-	public void setSertanejo(int sertanejo) {
-		this.sertanejo = sertanejo;
-	}
+
 	
 
 }

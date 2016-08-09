@@ -25,27 +25,40 @@ public class Usuario {
 	private int telefone;
 	@Column(length=500)
 	private String email;
-	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
-	private AtividadeFisica minhaAtividade;// nome da classe atividade fisica
+	//@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
+	//private AtividadeFisica minhaAtividade;// nome da classe atividade fisica
 	
 	@ManyToMany(cascade={CascadeType.MERGE,CascadeType.REFRESH})
 	private List<EstilosMusica> meusEstilos = new ArrayList<EstilosMusica>();
 	
-	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
-	private Filmes minhafilmes;
+	@ManyToMany(cascade={CascadeType.MERGE,CascadeType.REFRESH})
+	private List<AtividadeFisica> minhasAtividades = new ArrayList<AtividadeFisica>();
 	
 	
-	public EstilosMusica getMinhaMusica() {
-		return minhaMusica;
+	@ManyToMany(cascade={CascadeType.MERGE,CascadeType.REFRESH})
+	private List<Filmes> meusFilmes = new ArrayList<Filmes>();
+	//@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
+	//private Filmes minhafilmes;
+	
+	
+	
+	public List<EstilosMusica> getMeusEstilos() {
+		return meusEstilos;
 	}
-	public void setMinhaMusica(EstilosMusica minhaMusica) {
-		this.minhaMusica = minhaMusica;
+	public void setMeusEstilos(List<EstilosMusica> meusEstilos) {
+		this.meusEstilos = meusEstilos;
 	}
-	public AtividadeFisica getMinhaAtividade() {
-		return minhaAtividade;
+	public List<AtividadeFisica> getMinhasAtividades() {
+		return minhasAtividades;
 	}
-	public void setMinhaAtividade(AtividadeFisica minhaAtividade) {
-		this.minhaAtividade = minhaAtividade;
+	public void setMinhasAtividades(List<AtividadeFisica> minhasAtividades) {
+		this.minhasAtividades = minhasAtividades;
+	}
+	public List<Filmes> getMeusFilmes() {
+		return meusFilmes;
+	}
+	public void setMeusFilmes(List<Filmes> meusFilmes) {
+		this.meusFilmes = meusFilmes;
 	}
 	public long getOid() {
 		return oid;

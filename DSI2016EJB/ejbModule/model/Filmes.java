@@ -16,16 +16,18 @@ public class Filmes {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long oid;
-	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REFRESH})
+	//@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REFRESH})
 	
-	
-	private int terror;
-	private int drama;
-	private int comedia;
-	private Usuario Usuario;
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="filmes_oid")
-	private List<PrefFilmes> colFilmes; //associação entre filmes e prefFilmes.
+	@Column(length=500)
+	private String terror;
+	@Column(length=500)
+	private String drama;
+	@Column(length=500)
+	private String comedia;
+	//private Usuario Usuario;
+	//@OneToMany(cascade=CascadeType.ALL)
+	//@JoinColumn(name="filmes_oid")
+	//private List<PrefFilmes> colFilmes; //associação entre filmes e prefFilmes.
 	
 	
 	public long getOid() {
@@ -34,32 +36,25 @@ public class Filmes {
 	public void setOid(long oid) {
 		this.oid = oid;
 	}
-	public List<PrefFilmes> getColFilmes() {
-		return colFilmes;
-	}
-	public void setColFilmes(List<PrefFilmes> colFilmes) {
-		this.colFilmes = colFilmes;
-	}
-
-	
-	public int getTerror() {
+	public String getTerror() {
 		return terror;
 	}
-	public void setTerror(int terror) {
+	public void setTerror(String terror) {
 		this.terror = terror;
 	}
-	public int getDrama() {
+	public String getDrama() {
 		return drama;
 	}
-	public void setDrama(int drama) {
+	public void setDrama(String drama) {
 		this.drama = drama;
 	}
-	public int getComedia() {
+	public String getComedia() {
 		return comedia;
 	}
-	public void setComedia(int comedia) {
+	public void setComedia(String comedia) {
 		this.comedia = comedia;
 	}
+
 	
 
 }
