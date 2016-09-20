@@ -19,41 +19,28 @@ public class Filmes {
 	//@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REFRESH})
 	
 	@Column(length=500)
-	private String terror;
-	@Column(length=500)
-	private String drama;
-	@Column(length=500)
-	private String comedia;
+	private String descricao;
+	
 	//private Usuario Usuario;
 	//@OneToMany(cascade=CascadeType.ALL)
 	//@JoinColumn(name="filmes_oid")
 	//private List<PrefFilmes> colFilmes; //associação entre filmes e prefFilmes.
 	
 	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	public long getOid() {
 		return oid;
 	}
 	public void setOid(long oid) {
 		this.oid = oid;
 	}
-	public String getTerror() {
-		return terror;
-	}
-	public void setTerror(String terror) {
-		this.terror = terror;
-	}
-	public String getDrama() {
-		return drama;
-	}
-	public void setDrama(String drama) {
-		this.drama = drama;
-	}
-	public String getComedia() {
-		return comedia;
-	}
-	public void setComedia(String comedia) {
-		this.comedia = comedia;
-	}
+
+	
 
 	
 

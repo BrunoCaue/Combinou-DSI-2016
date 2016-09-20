@@ -11,8 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
-
+@NamedQueries({
+	@NamedQuery(name="getAllUsuario",
+			query="select c from Usuario c"),
+	
+})
 @Entity
 public class Usuario {
 	
@@ -22,12 +28,23 @@ public class Usuario {
 	@Column(length=500)
 	private String nome;
 	@Column(length=20)
-	private int telefone;
+	private String telefone;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	@Column(length=2000)
+	private String endereco;
 	@Column(length=500)
 	private String email;
 	//@ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
 	//private AtividadeFisica minhaAtividade;// nome da classe atividade fisica
 	
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 	@ManyToMany(cascade={CascadeType.MERGE,CascadeType.REFRESH})
 	private List<EstilosMusica> meusEstilos = new ArrayList<EstilosMusica>();
 	
@@ -72,11 +89,9 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getTelefone() {
+	
+	public String getTelefone() {
 		return telefone;
-	}
-	public void setTelefone(int telefone) {
-		this.telefone = telefone;
 	}
 	public String getEmail() {
 		return email;
