@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import model.AtividadeFisica;
 import model.Usuario;
 
 /**
@@ -51,6 +52,18 @@ public class UsuarioBean implements UsuarioBeanLocal {
 		//q.setMaxResults(100); //numero registo
 		
 		return q.getResultList();
+	}
+
+	@Override
+	public void remove(AtividadeFisica modelfisica) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void save(AtividadeFisica modelfisica) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

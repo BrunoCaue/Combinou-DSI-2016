@@ -5,7 +5,7 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="DSI2016WEB.war" deploy-path="/" handle="module:/resource/DSI2016WEB/DSI2016WEB">
+        <dependent-module archiveName="DSI2016WEB2.war" deploy-path="/" handle="module:/resource/DSI2016WEB2/DSI2016WEB2">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+  	  xmlns:p="http://primefaces.org/ui">
+		<h:head>
+			<meta charset="UTF-8"/>
+			<title>Manter Gostos</title>
+		</h:head>
+		<body>
+			<h:form id="formtable">
+				<p:panel header="Manter Gostos">
+					<p:dataTable value="#{crtatividadesfisica.getAll()}"
+						 selectionMode="single"
+						 selection="#{crtatividadesfisica.modelfisica}"
+						 rowKey="#{umatividades.oid}"
+						 var="umatividades" id="tabledados">
+						<f:facet name="header">Lista de Gosto</f:facet>
+						<p:column>
+							<f:facet name="header">AtividadeFisica</f:facet>
+							<h:outputText value="#{umatividades.descricao}" /> 
+						</p:column>
+						<f:facet name="footer">
+							<p:commandButton value="Incluir" 
+								id="cbIncluir" 
+								update=":form"
+								action="#{crtatividadesfisica.create()}"
+								onsuccess="PF('dlg1').show()"/>
+							<p:commandButton value="Alterar" 
+								id="cbAlterar" 
+								update=":form"
+								onsuccess="PF('dlg1').show()"/>
+							<p:commandButton value="Excluir"
+								id="cbExcluir"
+								update=":form"
+								onsuccess="PF('dlg1').show()"/>
+								
+						</f:facet>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			
+			<!--  AQUI OHHHHH -->
+			<p:dialog width="500" height="300" 
+				id="detailDialog" modal="true"
+				header="Detalhe do Gostos" 
+				widgetVar="dlg1">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+						<h:outputLabel name="lblDescricao" value="Descricao"/>
+						<p:inputText id="txtDescricao" label="lblDescricao"
+							value="#{crtatividadesfisica.modelfisica.descricao}"/>
+							
+						<f:facet name="footer">
+			               <p:commandButton  value="OK"
+			               	id="cbOK" 
+			               	action="#{crtusuario.save()}"
+			               	update=":formtable:tabledados"
+			               	onsuccess="PF('dlg1').hide()"/>
+			               <p:commandButton  value="Cancelar"
+			               	id="cbCancelar" 
+			               	update=":formtable:tabledados"
+			               	onsuccess="PF('dlg1').hide()"/>			               	
+			            </f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>	
+		</body>
+</html>
