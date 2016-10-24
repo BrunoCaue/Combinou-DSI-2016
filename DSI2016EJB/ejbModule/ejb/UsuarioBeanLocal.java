@@ -14,6 +14,7 @@ public interface UsuarioBeanLocal {
 	public void remove(AtividadeFisica modelfisica);
 	public void remove(Usuario c);
 	public void save(AtividadeFisica modelfisica);
+	public List <Usuario> getUsuarioByNome(String nome);
 
 	public List<Usuario> getAll();
 

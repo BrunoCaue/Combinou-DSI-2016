@@ -18,6 +18,11 @@ import javax.persistence.NamedQuery;
 	@NamedQuery(name="getAllUsuario",
 			query="select c from Usuario c"),
 	
+	// pra fazer o busca
+		@NamedQuery(name="getUsuarioByNome",
+				query="select c from Usuario c where c.nome like :nome"),
+		
+	
 })
 @Entity
 public class Usuario {

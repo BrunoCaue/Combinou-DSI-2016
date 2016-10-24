@@ -41,6 +41,7 @@ public class UsuarioBean implements UsuarioBeanLocal {
 	@Override
 	public void remove(Usuario c) {
 		// TODO Auto-generated method stub
+		c = em.find(Usuario.class,c.getOid() );
 		em.remove(c);
 		
 	}
@@ -64,6 +65,17 @@ public class UsuarioBean implements UsuarioBeanLocal {
 	public void save(AtividadeFisica modelfisica) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Usuario> getUsuarioByNome(String nome) {
+		// TODO Auto-generated method stub
+		Query q = em.createNamedQuery("getUsuarioByNome");
+		q.setParameter("nome", "%"+nome+"%");
+		
+		
+		
+		return q.getResultList();
 	}
 	
 

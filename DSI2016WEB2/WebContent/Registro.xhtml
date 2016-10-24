@@ -4,6 +4,8 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
   	  xmlns:p="http://primefaces.org/ui">
+ <ui:decorate template="template.xhtml">
+        <ui:define name="centro"> 	   	  
 		<h:head>
 			<meta charset="UTF-8"/>
 			<title>Manter Usuarios</title>
@@ -11,7 +13,15 @@
 		<body>
 			<h:form id="formtable">
 				<p:panel header="Manter Usuario">
-					<p:dataTable value="#{crtusuario.getAll()}"
+				
+					<p:inputText id ="txtBusca"
+						value ="#{crtusuario.valorBusca}"/>
+					<p:commandButton value="Busca"
+						id="cbBuscar"
+						action="#{crtusuario.busca()}"
+						update="tabledados"/>
+					<!--  tabela de busca -->
+					<p:dataTable value="#{crtusuario.colUsuario}"
 						 selectionMode="single"
 						 selection="#{crtusuario.model}"
 						 rowKey="#{umusuario.oid}"
@@ -46,11 +56,10 @@
 								id="cbAlterar" 
 								update=":form"
 								onsuccess="PF('dlg1').show()"/>
-							<p:commandButton value="Excluir"
-								id="cbExcluir"
-								update=":form"
-								
-								onsuccess="PF('dlg1').show()"/>
+							<p:commandButton 
+								value="Excluir" id="cbExcluir"
+								icon="ui-icon-extlink"
+								oncomplete="PF('dlgRemove').show()"/>	
 								
 						</f:facet>
 					</p:dataTable>
@@ -96,6 +105,25 @@
 			            </f:facet>
 					</h:panelGrid>
 				</h:form>
-			</p:dialog>	
+			</p:dialog>
+			<p:dialog width="500" height="50" 
+					  id="removeDialog" modal="true"
+					  header="Confirma Exclusão do registro?"
+					  widgetVar="dlgRemove">
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:commandButton 
+							action="#{crtusuario.remove()}"
+							update=":formtable" value="OK"/>
+					 	<h:commandButton 
+					 		immediate="true"
+					 		update=":formtable" value="Cancelar"
+					 	/>
+					
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
 		</body>
+</ui:define>
+    </ui:decorate>		
 </html>

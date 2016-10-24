@@ -15,6 +15,7 @@ public class CrtAtividadeFisica {
 	@EJB
 	private AtividadeFisicaBeanLocal fisicaBean;
 	private AtividadeFisica model = new AtividadeFisica();
+	private String valorBusca;
 	
 	public void create(){
 		model = new AtividadeFisica();
